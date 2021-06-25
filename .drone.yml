@@ -5,6 +5,13 @@ name: default
 steps:
 - name: build
   image: golang
+ 
 commands:
   - go build
   - go test
+ 
+when:
+  branch:
+    include:
+    - master
+    - feature/*
