@@ -8,7 +8,7 @@ steps:
 - name: backend
   image: golang
   commands:
-    - go mod init
+    - go mod init situ.digitalstacks.net/m/v2
     - go get
     - go build
     - go test
