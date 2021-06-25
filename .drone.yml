@@ -9,7 +9,7 @@ steps:
   image: golang
   commands:
     - go mod init [module01]
-    - go get /drone/src
+    - go get module01
     - go build
     - go test
 
