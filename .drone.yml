@@ -1,19 +1,32 @@
 ---
-kind: pipeline
-type: docker
 name: default
 
-workspace:
-  path: /myworkspace/sithu
+kind: pipeline
+type: docker
 
 steps:
-  - name: lint
-    image: python:3.7-alpine
-    commands:
-      - python -m pip install -r requirements.txt
-      - flake8
- when:
-  branch:
-    include:
-    - master
-    - feature/*
+- name: backend
+  image: golang
+  commands:
+    - go get
+    - go build
+    - go test
+
+- name: frontend
+  image: node:6
+  commands:
+    - npm install
+    - npm test
+
+- name: publish
+  image: plugins/docker
+  settings:
+    repo: octocat/hello-world
+    tags: [ 1, 1.1, latest ]
+    registry: index.docker.io
+
+- name: notify
+  image: plugins/slack
+  settings:
+    channel: developers
+    username: drone
