@@ -4,5 +4,11 @@ name: default
 
 steps:
 - name: build
-  pull: always
-  image: golang:1.12
+  image: golang
+  commands:
+  - go build
+  - go test
+
+trigger:
+  branch:
+  - master
