@@ -12,6 +12,6 @@ commands:
  
 when:
   branch:
-    include:
+    exclude:
     - master
     - feature/*
