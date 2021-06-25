@@ -8,7 +8,7 @@ steps:
 - name: backend
   image: golang
   commands:
-    - go help mod init
+    - go mod init [module01]
     - go get
     - go build
     - go test
