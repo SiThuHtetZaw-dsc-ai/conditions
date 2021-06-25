@@ -1,33 +1,10 @@
 ---
+kind: pipeline
 name: default
 
-kind: pipeline
-type: docker
-
 steps:
-- name: backend
-  image: golang
-  commands:
-    - go mod init [module01]
-    - go get module.01
-    - go build
-    - go test
-
-- name: frontend
-  image: node:6
-  commands:
-    - npm install
-    - npm test
-
-- name: publish
-  image: plugins/docker
+- name: download  
+  image: plugins/download
   settings:
-    repo: octocat/hello-world
-    tags: [ 1, 1.1, latest ]
-    registry: index.docker.io
-
-- name: notify
-  image: plugins/slack
-  settings:
-    channel: developers
-    username: drone
+    source: https://github.com/drone/drone-cli/releases/download/v0.8.5/drone_linux_amd64.tar.gz
+    destination: drone_linux.tar.gz
