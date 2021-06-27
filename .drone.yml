@@ -10,6 +10,5 @@ steps:
       - python -m pip install -r requirements.txt
       - flake8
 when:
-  instance:
-    include:
-      - situ.digitalstacks.net
+branch:
+  - branch1
