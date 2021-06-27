@@ -8,7 +8,9 @@ steps:
   commands:
   - go build
   - go test
-
-trigger:
+  
+when:
   branch:
-  - master
+    include:
+    - master
+    - feature/*
