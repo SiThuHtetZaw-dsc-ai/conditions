@@ -11,5 +11,5 @@ steps:
       - flake8
 when:
   branch:
-    exclude:
+    include:
     - branch1
