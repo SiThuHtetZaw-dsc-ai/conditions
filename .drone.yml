@@ -12,4 +12,4 @@ steps:
 when:
   branch:
     include:
-  - branch1
+    - branch1
