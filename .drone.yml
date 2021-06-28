@@ -10,5 +10,6 @@ steps:
       - python -m pip install -r requirements.txt
       - flake8
 when:
-  status:
-  - failure
+    branch:
+      only:
+        - main
