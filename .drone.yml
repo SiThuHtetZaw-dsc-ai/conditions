@@ -13,4 +13,4 @@ steps:
 when:
   event:
     exclude:
-    - push
+    - pull_request
