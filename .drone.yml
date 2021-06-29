@@ -3,22 +3,27 @@ kind: pipeline
 name: default
 
 steps:
-- name: foo
-  image: alpine:3.8
+- name: restore-cache
+  image: drillster/drone-volume-cache
   volumes:
-  - name: m2
-    path: /root/.m2
-  commands:
-  - touch /root/.m2/foo.txt
+  - name: cache
+    path: /cache
+  settings:
+    restore: true
+    mount:
+      - ./node_modules
 
-- name: bar
-  image: alpine:3.8
+- name: rebuild-cache
+  image: drillster/drone-volume-cache
   volumes:
-  - name: m2
-    path: /root/.m2
-  commands:
-  - ls /root/.m2/
+  - name: cache
+    path: /cache
+  settings:
+    rebuild: true
+    mount:
+      - ./node_modules
 
 volumes:
-- name: m2
-  temp: {}
+  - name: cache
+    host: 
+    path: /var/lib/cache
