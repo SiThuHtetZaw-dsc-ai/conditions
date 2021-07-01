@@ -3,13 +3,11 @@ kind: pipeline
 name: default
 
 steps:
-- name: cache
-  image: drillster/drone-volume-cache
-  volumes:
-  - name: cache
-    path: /cache
+- name: build
+  image: alpine
+  environment:
+    USERNAME:
+      from_secret: docker_username
+    PASSWORD:
+      from_secret: docker_password
 
-volumes:
-  - name: cache
-    host: 
-    path: /var/lib/cache
