@@ -1,17 +1,11 @@
 ---
 kind: pipeline
-type: ssh
-name: a_ssh_pipeline
-
-server:
-  host: 1.2.3.4
-  user: root
-  password:
-    from_secret: password
-
+name: default
 steps:
-- name: greeting
-  commands:
-  - echo hello world
-
-...
+ - name: deploy
+   image: sloonz/drone-ssh-client
+   steps:
+    - ssh-get-certificate http://drone-ssh-ca:3000
+    - scp package.tar.gz user@example.com:htdocs/
+   when:
+    branch: master
