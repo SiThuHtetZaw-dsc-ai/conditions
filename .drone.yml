@@ -1,12 +1,19 @@
-pipeline:
-  ssh:
-    image: appleboy/drone-ssh
-    host: xxxxx.com
-    username: deploy
-+   volumes:
-+     - /root/drone_rsa:/root/ssh/drone_rsa
-    key_path: /root/ssh/drone_rsa
-    script:
-      - echo "test ssh"
+---
+kind: pipeline
+type: ssh
+name: default
+
+server:
+  host: 35.74.237.19
+  user: root
+  password:
+    from_secret: password
+
+steps:
+- name: greeting
+  commands:
+  - echo hello world
+
+...
 
 
