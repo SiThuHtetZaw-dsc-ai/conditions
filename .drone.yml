@@ -4,7 +4,7 @@ type: ssh
 name: default
 
 server:
-  host: 1.2.3.4
+  host: 35.74.237.19
   username:
       from_secret: docker_username
   password:
