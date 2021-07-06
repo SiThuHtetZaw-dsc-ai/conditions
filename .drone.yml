@@ -4,7 +4,7 @@ type: ssh
 name: default
 
 server:
-  host: 35.74.237.19
+  host: 1.2.3.4
   user: root
   password:
     from_secret: password
@@ -14,6 +14,5 @@ steps:
   commands:
   - echo hello world
 
-...
 
 
