@@ -6,8 +6,7 @@ name: default
 server:
   host: 
     from_secret: 1.2.3.4
-  user: 
-    from_secret: username
+ 
   password:
     from_secret: password
 
