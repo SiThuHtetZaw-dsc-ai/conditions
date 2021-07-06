@@ -6,7 +6,8 @@ name: default
 
 server:
   host: 1.2.3.4
-  user: root
+  username:
+      from_secret: docker_username
   password:
     from_secret: docker_password
 
